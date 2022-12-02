@@ -12,7 +12,6 @@ import static javax.persistence.GenerationType.*;
 @Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public abstract class TaskUnit {
     @Id
     @GeneratedValue(strategy = AUTO)
@@ -20,4 +19,10 @@ public abstract class TaskUnit {
     private String name;
     private UnitStatus status;
     private LocalDate deadline;
+
+    public TaskUnit(String name, UnitStatus status, LocalDate deadline) {
+        this.name = name;
+        this.status = status;
+        this.deadline = deadline;
+    }
 }

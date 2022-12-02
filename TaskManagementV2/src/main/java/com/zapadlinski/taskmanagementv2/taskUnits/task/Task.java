@@ -22,7 +22,7 @@ public class Task extends TaskUnit {
         this.parent = parent;
     } */
 
-    public Task(Long id, String name, UnitStatus status, LocalDate deadline) {
-        super(id, name, status, deadline);
+    public Task(String name, UnitStatus status, LocalDate deadline) {
+        super(name, status, deadline);
     }
 }

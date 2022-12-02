@@ -27,7 +27,7 @@ public class Module extends TaskUnit {
         this.tasks = tasks;
     } */
 
-    public Module(Long id, String name, UnitStatus status, LocalDate deadline) {
-        super(id, name, status, deadline);
+    public Module(String name, UnitStatus status, LocalDate deadline) {
+        super(name, status, deadline);
     }
 }

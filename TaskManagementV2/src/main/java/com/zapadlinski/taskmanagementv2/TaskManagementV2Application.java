@@ -28,13 +28,11 @@ public class TaskManagementV2Application {
 	CommandLineRunner run(TaskRepository repository, EmployeeRepository employeeRepository) {
 		return args -> {
 			Task t1 = repository.save(new Task(
-					null,
 					"testowy1",
 					UnitStatus.NEW,
 					LocalDate.now()
 					));
 			Task t2 = repository.save(new Task(
-					null,
 					"testowy2",
 					UnitStatus.IN_PROGRESS,
 					LocalDate.of(2000, Month.APRIL, 2)

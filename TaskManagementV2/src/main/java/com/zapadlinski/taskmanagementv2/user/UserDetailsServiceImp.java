@@ -1,6 +1,7 @@
 package com.zapadlinski.taskmanagementv2.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,7 +18,7 @@ public class UserDetailsServiceImp implements UserDetailsService {      //TODO l
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Employee> retrievedEmployee = repository.findEmployeeByUsername(username);
         if (!retrievedEmployee.isPresent()) {
-            throw new UsernameNotFoundException("User not found");
+            throw new BadCredentialsException("invalid login details");
         }
         Employee employee = retrievedEmployee.get();
         return new EmployeeDetails(employee);

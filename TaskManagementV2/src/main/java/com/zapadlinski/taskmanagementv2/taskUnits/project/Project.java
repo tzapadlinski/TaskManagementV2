@@ -21,8 +21,8 @@ public class Project extends TaskUnit {
     @OneToMany(targetEntity = Module.class)
     private List modules;
 
-    public Project(Long id, String name, UnitStatus status, LocalDate deadline, List modules) {
-        super(id, name, status, deadline);
+    public Project(String name, UnitStatus status, LocalDate deadline, List modules) {
+        super(name, status, deadline);
         this.modules = modules;
     }
 }
