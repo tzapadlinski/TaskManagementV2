@@ -41,7 +41,7 @@ public class TaskServiceImplementation implements TaskService{
     public Task changeStatus(Long id, UnitStatus status) {
         Task taskToUpdate = get(id);
         log.info("Modifying task's status");
-        if (statusValidator.validateStatus(taskToUpdate, status, null)) {
+        if (statusValidator.validate(taskToUpdate, status, null)) {
             taskToUpdate.setStatus(status);
             repository.save(taskToUpdate);
             log.info("Task's status modification succeeded");

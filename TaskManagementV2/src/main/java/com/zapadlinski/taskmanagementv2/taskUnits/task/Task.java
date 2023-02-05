@@ -11,18 +11,18 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name= "tasks")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Task extends TaskUnit {
-    /*@ManyToOne(targetEntity = Module.class, cascade = CascadeType.DETACH)
-    private Module parent;
 
-    public Task(Long id, String name, UnitStatus status, LocalDate deadline, Module parent) {
-        super(id, name, status, deadline);
-        this.parent = parent;
-    } */
+    @ManyToOne(cascade = {CascadeType.PERSIST,
+            CascadeType.MERGE}, optional = false)
+    @JoinColumn(name = "module_id", nullable = false)
+    private Module module;
 
-    public Task(String name, UnitStatus status, LocalDate deadline) {
-        super(name, status, deadline);
+    public Task(Long id, String name, UnitStatus status, LocalDate startDate, LocalDate deadline, Module module) {
+        super(id, name, status, startDate, deadline);
+        this.module = module;
     }
 }

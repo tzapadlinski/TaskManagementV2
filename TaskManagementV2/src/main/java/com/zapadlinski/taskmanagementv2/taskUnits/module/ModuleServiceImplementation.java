@@ -53,10 +53,4 @@ public class ModuleServiceImplementation implements ModuleService{
         repository.deleteById(id);
         return Boolean.TRUE;
     }
-
-    /*@Override
-    public Collection<Task> listTasks(Long id) {
-        Module module = repository.findById(id).get();
-        return module.getTasks();
-    } */
 }

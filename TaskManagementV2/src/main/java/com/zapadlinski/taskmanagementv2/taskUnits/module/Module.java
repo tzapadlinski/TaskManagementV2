@@ -6,28 +6,41 @@ import com.zapadlinski.taskmanagementv2.taskUnits.project.Project;
 import com.zapadlinski.taskmanagementv2.taskUnits.task.Task;
 import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 @Entity
 @Table(name = "modules")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Module extends TaskUnit {
 
-   /* @OneToMany(targetEntity = Task.class)
-    private List tasks;
 
-    public Module(Long id, String name, UnitStatus status, LocalDate deadline, List tasks) {
-        super(id, name, status, deadline);
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy = "module", cascade = {CascadeType.PERSIST,
+            CascadeType.MERGE}, orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<>();
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, optional = false)
+    @JoinColumn(name = "project_id", nullable = false)
+    private Project project;
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Module(Long id, String name, UnitStatus status,
+                  LocalDate startDate, LocalDate deadline, List<Task> tasks) {
+        super(id, name, status, startDate, deadline);
         this.tasks = tasks;
-    } */
-
-    public Module(String name, UnitStatus status, LocalDate deadline) {
-        super(name, status, deadline);
     }
 }

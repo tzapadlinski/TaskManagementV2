@@ -4,7 +4,6 @@ public enum UnitStatus {
     NEW,
     IN_PROGRESS,
     FOR_TESTING,
-    TESTED,
     COMPLETED,
     CANCELLED,
     HALTED,

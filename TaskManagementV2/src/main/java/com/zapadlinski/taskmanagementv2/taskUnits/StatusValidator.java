@@ -9,7 +9,13 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class StatusValidator {
 
-    public boolean validateStatus(TaskUnit taskUnit, UnitStatus newStatus, Employee employee){
+    public boolean validate(TaskUnit taskUnit, UnitStatus newStatus,
+                            Employee employee) {
+        return validateStatus(taskUnit, newStatus)
+                && validateByEmployee(taskUnit, newStatus, employee);
+    }
+
+    private boolean validateStatus(TaskUnit taskUnit, UnitStatus newStatus){
         UnitStatus oldStatus = taskUnit.getStatus();
         switch (oldStatus) {
             case NEW -> {
@@ -23,11 +29,6 @@ public class StatusValidator {
                         || newStatus == UnitStatus.CANCELLED;
             }
             case FOR_TESTING, REFACTORED -> {
-                return newStatus == UnitStatus.TESTED
-                        || newStatus == UnitStatus.HALTED
-                        || newStatus == UnitStatus.CANCELLED;
-            }
-            case TESTED -> {
                 return newStatus == UnitStatus.COMPLETED
                         || newStatus == UnitStatus.HALTED
                         || newStatus == UnitStatus.CANCELLED;
@@ -48,5 +49,10 @@ public class StatusValidator {
             default -> throw new IllegalStateException("Unexpected value: " + oldStatus);
         }
         return false;
+    }
+
+    //TODO after making employees
+    private boolean validateByEmployee(TaskUnit taskUnit, UnitStatus newStatus, Employee employee){
+        return true;
     }
 }

@@ -9,20 +9,19 @@ import java.time.LocalDate;
 import static javax.persistence.GenerationType.*;
 
 @Entity
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS )
-@Data
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public abstract class TaskUnit {
     @Id
     @GeneratedValue(strategy = AUTO)
     private Long id;
     private String name;
     private UnitStatus status;
+    private LocalDate startDate;
     private LocalDate deadline;
 
-    public TaskUnit(String name, UnitStatus status, LocalDate deadline) {
-        this.name = name;
-        this.status = status;
-        this.deadline = deadline;
-    }
+
 }
