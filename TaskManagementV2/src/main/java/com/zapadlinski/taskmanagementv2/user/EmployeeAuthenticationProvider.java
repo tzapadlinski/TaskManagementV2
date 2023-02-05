@@ -25,7 +25,6 @@ public class EmployeeAuthenticationProvider implements AuthenticationProvider {
         if (givenPassword.equals(password)){
             UsernamePasswordAuthenticationToken token =
                     new UsernamePasswordAuthenticationToken(username, password, employeeDetails.getAuthorities());
-            token.setDetails(employeeDetails.getEmployee());
             return token;
         }
         else {

@@ -5,8 +5,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @AllArgsConstructor
 public class EmployeeDetails implements UserDetails{
@@ -17,7 +17,7 @@ public class EmployeeDetails implements UserDetails{
         String role = employee.getClass().getSimpleName();
         role = role.toUpperCase();
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role);
-        return Arrays.asList(authority);
+        return List.of(authority);
     }
 
     @Override
@@ -48,9 +48,5 @@ public class EmployeeDetails implements UserDetails{
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public Employee getEmployee() {
-        return employee;
     }
 }
