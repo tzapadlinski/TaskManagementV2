@@ -1,21 +1,19 @@
 package com.zapadlinski.taskmanagementv2.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeAuthenticationProvider implements AuthenticationProvider {
-    @Autowired
-    private UserDetailsServiceImp userDetailsService;
+    private final UserDetailsServiceImp userDetailsService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public EmployeeAuthenticationProvider(UserDetailsServiceImp userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -31,8 +29,7 @@ public class EmployeeAuthenticationProvider implements AuthenticationProvider {
             return token;
         }
         else {
-            return null;
-            //throw new BadCredentialsException("Invalid login details");
+            throw new BadCredentialsException("Invalid login details");
         }
     }
 

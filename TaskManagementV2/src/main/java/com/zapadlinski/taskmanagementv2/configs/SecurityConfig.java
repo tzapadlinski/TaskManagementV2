@@ -1,13 +1,10 @@
 package com.zapadlinski.taskmanagementv2.configs;
 
-import com.zapadlinski.taskmanagementv2.user.EmployeeAuthenticationProvider;
 import com.zapadlinski.taskmanagementv2.user.EmployeeRepository;
 import com.zapadlinski.taskmanagementv2.user.UserDetailsServiceImp;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.*;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,6 +22,7 @@ public class SecurityConfig {
                 )
                 .formLogin(formLogin -> formLogin
                         .permitAll()
+                        .failureUrl("/login?error=true")
                 )
                 .csrf( csrf -> csrf.disable())
                 .httpBasic();
@@ -32,10 +30,10 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+    public AuthenticationManager authManager(HttpSecurity http, AuthenticationProvider authenticationProvider) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.authenticationProvider(authenticationProvider());
+        authenticationManagerBuilder.authenticationProvider(authenticationProvider);
         return authenticationManagerBuilder.build();
     }
 
@@ -47,10 +45,5 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
-        return new EmployeeAuthenticationProvider();
     }
 }

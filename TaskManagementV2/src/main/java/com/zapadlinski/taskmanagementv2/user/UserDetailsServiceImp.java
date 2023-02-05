@@ -17,8 +17,8 @@ public class UserDetailsServiceImp implements UserDetailsService {      //TODO l
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Employee> retrievedEmployee = repository.findEmployeeByUsername(username);
-        if (!retrievedEmployee.isPresent()) {
-            throw new BadCredentialsException("invalid login details");
+        if (retrievedEmployee.isEmpty()) {
+            throw new BadCredentialsException("Invalid login details");
         }
         Employee employee = retrievedEmployee.get();
         return new EmployeeDetails(employee);
