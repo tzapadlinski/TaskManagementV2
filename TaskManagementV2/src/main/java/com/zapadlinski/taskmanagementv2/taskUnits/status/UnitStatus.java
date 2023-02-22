@@ -1,4 +1,4 @@
-package com.zapadlinski.taskmanagementv2.taskUnits.enumeration;
+package com.zapadlinski.taskmanagementv2.taskUnits.status;
 
 public enum UnitStatus {
     NEW,

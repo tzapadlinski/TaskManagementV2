@@ -1,6 +1,7 @@
+/*
 package com.zapadlinski.taskmanagementv2.taskUnits.task;
 
-import com.zapadlinski.taskmanagementv2.taskUnits.enumeration.UnitStatus;
+import com.zapadlinski.taskmanagementv2.taskUnits.status.UnitStatus;
 import com.zapadlinski.taskmanagementv2.taskUnits.wrappers.IdDateWrapper;
 import com.zapadlinski.taskmanagementv2.taskUnits.wrappers.IdStatusWrapper;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class TaskController {
     @GetMapping("/list")
     @ResponseBody
     public Collection<Task> showList() {
-        return taskService.list();
+        return taskService.listAll();
     }
 
     @GetMapping
@@ -58,3 +59,4 @@ public class TaskController {
         return isDeleted;
     }
 }
+*/

@@ -1,6 +1,6 @@
 package com.zapadlinski.taskmanagementv2.taskUnits;
 
-import com.zapadlinski.taskmanagementv2.taskUnits.enumeration.UnitStatus;
+import com.zapadlinski.taskmanagementv2.taskUnits.status.UnitStatus;
 import lombok.*;
 
 import javax.persistence.*;

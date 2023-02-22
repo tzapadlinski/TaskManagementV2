@@ -6,4 +6,5 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 public interface TaskService extends TaskUnitService<Task> {
+
 }

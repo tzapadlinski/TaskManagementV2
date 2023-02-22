@@ -1,6 +1,7 @@
-package com.zapadlinski.taskmanagementv2.taskUnits;
+package com.zapadlinski.taskmanagementv2.taskUnits.status;
 
-import com.zapadlinski.taskmanagementv2.taskUnits.enumeration.UnitStatus;
+import com.zapadlinski.taskmanagementv2.taskUnits.TaskUnit;
+import com.zapadlinski.taskmanagementv2.taskUnits.status.UnitStatus;
 import com.zapadlinski.taskmanagementv2.user.Employee;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;

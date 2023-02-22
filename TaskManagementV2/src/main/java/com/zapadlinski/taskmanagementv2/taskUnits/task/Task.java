@@ -1,7 +1,7 @@
 package com.zapadlinski.taskmanagementv2.taskUnits.task;
 
 import com.zapadlinski.taskmanagementv2.taskUnits.TaskUnit;
-import com.zapadlinski.taskmanagementv2.taskUnits.enumeration.UnitStatus;
+import com.zapadlinski.taskmanagementv2.taskUnits.status.UnitStatus;
 import com.zapadlinski.taskmanagementv2.taskUnits.module.Module;
 import lombok.*;
 

@@ -1,7 +1,7 @@
 package com.zapadlinski.taskmanagementv2.taskUnits.module;
 
 import com.zapadlinski.taskmanagementv2.taskUnits.TaskUnit;
-import com.zapadlinski.taskmanagementv2.taskUnits.enumeration.UnitStatus;
+import com.zapadlinski.taskmanagementv2.taskUnits.status.UnitStatus;
 import com.zapadlinski.taskmanagementv2.taskUnits.project.Project;
 import com.zapadlinski.taskmanagementv2.taskUnits.task.Task;
 import lombok.*;
@@ -9,7 +9,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 @Entity
